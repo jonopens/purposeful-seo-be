@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20171121183317) do
 
   create_table "pages", force: :cascade do |t|
     t.integer "site_id"
-    t.string "page_url"
+    t.string "page_path"
     t.string "page_status"
     t.float "text_to_html_ratio"
     t.integer "word_count"

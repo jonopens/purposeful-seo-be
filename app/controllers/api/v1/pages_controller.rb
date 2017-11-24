@@ -1,4 +1,4 @@
-class API::V1::PagesController < ApplicationController
+class Api::V1::PagesController < ApplicationController
 
   def index
     @pages = Page.all
@@ -23,7 +23,7 @@ class API::V1::PagesController < ApplicationController
   private
 
   def page_params
-  	params.require(:page).permit(:base_url, :page_count, :user_id)
+  	params.require(:page).permit(:site_id, :page_path, :page_status, :text_to_html_ratio, :word_count, :title, :meta_desc, :h1, :h2, :last_crawled)
   end
 
 
