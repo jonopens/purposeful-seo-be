@@ -1,21 +1,21 @@
 
 
 
-User.create(email: "jon@jon.com", password: "woohoo", crawl_credits: 500, name: "Jon Openshaw")
-User.create(email: "james@james.com", password: "woohoo", crawl_credits: 500, name: "James Patterson")
-User.create(email: "jane@jane.com", password: "woohoo", crawl_credits: 500, name: "Jane Eyre")
-User.create(email: "jaime@jaime.com", password: "woohoo", crawl_credits: 500, name: "Jaime Openshaw")
+User.create(email: "jon@jon.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jon Openshaw")
+User.create(email: "james@james.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "James Patterson")
+User.create(email: "jane@jane.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jane Eyre")
+User.create(email: "jaime@jaime.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jaime Openshaw")
 
-Site.create(base_url:' http://www.jonopens.com', page_count: 5, user_id: 1)
-Site.create(base_url:' http://www.jonnylovesjaime.com', page_count: 1, user_id: 4)
-Site.create(base_url:' https://www.theknot.com', page_count: 15, user_id: 2)
-Site.create(base_url:' https://www.bustle.com', page_count: 22, user_id: 3)
+Site.create(base_url: 'http://www.jonopens.com', page_count: 5, user_id: 1)
+Site.create(base_url: 'http://www.jonnylovesjaime.com', page_count: 1, user_id: 4)
+Site.create(base_url: 'https://www.theknot.com', page_count: 15, user_id: 2)
+Site.create(base_url: 'https://www.bustle.com', page_count: 22, user_id: 3)
 
 
 Page.create(
 	site_id: 1, 
 	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri.html', 
-	page_status: "live", 
+	page_insight_status: "pending", 
 	text_to_html_ratio: 41.99, 
 	word_count: 742, 
 	title: 'Parsing XML Sitemaps with Nokogiri & Open-URI in Ruby', 

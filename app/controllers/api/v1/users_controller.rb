@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+ class Api::V1::UsersController < ApplicationController
 
   def index
     @users = User.all
@@ -11,9 +11,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    @user = User.find_or_create_by(user_params)
-
-    if @user.save
+    @user = User.find_or_create_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
       render json: @user
     else
       render json: {error: @user.errors.full_messages}, status: 422
@@ -23,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password_digest, :crawl_credits)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
 end

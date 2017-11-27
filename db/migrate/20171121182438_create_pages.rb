@@ -3,7 +3,7 @@ class CreatePages < ActiveRecord::Migration[5.1]
     create_table :pages do |t|
     	t.integer :site_id
     	t.string :page_path
-    	t.string :page_status
+    	t.string :page_insight_status
     	t.float :text_to_html_ratio
     	t.integer :word_count
         t.string :title
