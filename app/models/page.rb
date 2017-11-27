@@ -1,7 +1,7 @@
 class Page < ApplicationRecord
 	belongs_to :site
-	has_many :crawls
+	has_many :crawls, dependent: :destroy
 	has_many :insights, through: :crawls
-	has_many :keyterms
-	has_many :comments
+	has_many :keyterms, dependent: :destroy
+	has_many :comments, dependent: :destroy
 end
