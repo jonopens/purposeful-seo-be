@@ -20,6 +20,11 @@ class Api::V1::SitesController < ApplicationController
     end
   end	
 
+  def destroy
+    @site = Site.find(params[:id])
+    @site.destroy
+  end
+
   private
 
   def site_params

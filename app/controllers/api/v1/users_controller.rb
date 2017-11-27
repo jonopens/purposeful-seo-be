@@ -19,6 +19,10 @@
     end
   end
 
+  def update
+    # tbd
+  end
+
   private
 
   def user_params
