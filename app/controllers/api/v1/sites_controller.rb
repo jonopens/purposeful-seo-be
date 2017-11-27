@@ -28,7 +28,7 @@ class Api::V1::SitesController < ApplicationController
   private
 
   def site_params
-  	params.require(:site).permit(:base_url, :page_count, :user_id)
+  	params.require(:site).permit(:full_url, :domain_name, :protocol, :page_count, :user_id)
   end
 
 

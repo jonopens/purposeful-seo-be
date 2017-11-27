@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 20171121183317) do
   end
 
   create_table "sites", force: :cascade do |t|
-    t.string "base_url"
+    t.string "full_url"
+    t.string "domain_name"
+    t.string "protocol"
     t.integer "page_count"
     t.integer "user_id"
     t.datetime "created_at", null: false
