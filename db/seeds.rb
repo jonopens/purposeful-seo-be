@@ -6,13 +6,13 @@ User.create(email: "james@james.com", password: "woohoo", password_confirmation:
 User.create(email: "jane@jane.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jane Eyre")
 User.create(email: "jaime@jaime.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jaime Openshaw")
 
-Site.create(domain_name: 'jonopens.com', protocol: 'http', full_url: 'http://www.jonopens.com', page_count: 5, user_id: 1)
-Site.create(domain_name: 'google.com', protocol: 'https', full_url: 'https://www.google.com', page_count: 1, user_id: 1)
-Site.create(domain_name: '1stdibs.com', protocol: 'http', full_url: 'http://www.1stdibs.com', page_count: 1, user_id: 1)
-Site.create(domain_name: 'thebump.com', protocol: 'http', full_url: 'http://www.thebump.com', page_count: 1, user_id: 1)
-Site.create(domain_name: 'jonnylovesjaime.com', protocol: 'http', full_url: 'http://www.jonnylovesjaime.com', page_count: 1, user_id: 4)
-Site.create(domain_name: 'theknot.com', protocol: 'https', full_url: 'https://www.theknot.com', page_count: 15, user_id: 2)
-Site.create(domain_name: 'bustle.com', protocol: 'https', full_url: 'https://www.bustle.com', page_count: 22, user_id: 3)
+Site.create(domain_name: 'www.jonopens.com', protocol: 'http', full_url: 'http://www.jonopens.com', page_count: 5, user_id: 1)
+Site.create(domain_name: 'www.google.com', protocol: 'https', full_url: 'https://www.google.com', page_count: 1, user_id: 1)
+Site.create(domain_name: 'www.1stdibs.com', protocol: 'http', full_url: 'http://www.1stdibs.com', page_count: 1, user_id: 1)
+Site.create(domain_name: 'www.thebump.com', protocol: 'http', full_url: 'http://www.thebump.com', page_count: 1, user_id: 1)
+Site.create(domain_name: 'www.jonnylovesjaime.com', protocol: 'http', full_url: 'http://www.jonnylovesjaime.com', page_count: 1, user_id: 4)
+Site.create(domain_name: 'www.theknot.com', protocol: 'https', full_url: 'https://www.theknot.com', page_count: 15, user_id: 2)
+Site.create(domain_name: 'www.bustle.com', protocol: 'https', full_url: 'https://www.bustle.com', page_count: 22, user_id: 3)
 
 
 Page.create(
