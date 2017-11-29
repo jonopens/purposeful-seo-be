@@ -22,7 +22,7 @@ class Api::V1::SitesController < ApplicationController
 
   def destroy
     @site = Site.find(params[:id])
-    puts @site
+    @site.destroy
   end
 
   private
