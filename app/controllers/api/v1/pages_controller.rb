@@ -11,7 +11,7 @@ class Api::V1::PagesController < ApplicationController
   end
 
   def create
-    @site = Page.find_or_create_by(page_params)
+    @page = Page.find_or_create_by(page_params)
 
     if @page.save
       render json: @page
