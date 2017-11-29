@@ -20,6 +20,19 @@ class Api::V1::PagesController < ApplicationController
     end
   end	
 
+  def update
+    # when I make a page hidden or recrawl the same page
+    # I want to update the correct record
+    # and eventually update insights
+
+    @page = Page.find(params[:id])
+    if @page.update(page_params)
+      puts "I UPDATED"
+    else
+      puts "DANG. I DIDN'T UPDATE"
+    end
+  end
+
   private
 
   def page_params
