@@ -36,17 +36,17 @@ class Crawl < ApplicationRecord
 		self.page.h2                 = self.make_node_array('h2', noko)
 	end
 
-	def return_crawl_errors
-
-	end
-
 	def make_node_array(selector, noko)
 		noko.css(selector).map { |n| n.text }
 	end	
 
-	def set_attributes
+	def set_attributes_so_hard
 		self.set_crawl_attributes
 		self.set_parent_page_attributes
+	end
+
+	def return_crawl_errors
+
 	end
 
 	def calculate_text_to_html_ratio(noko)
