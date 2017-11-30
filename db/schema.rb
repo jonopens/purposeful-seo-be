@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(version: 20171121183317) do
 
   create_table "crawls", force: :cascade do |t|
     t.integer "status_code"
-    t.text "content"
+    t.text "html_content"
+    t.text "body_text"
     t.integer "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -15,6 +15,8 @@ Site.create(domain_name: 'www.theknot.com', protocol: 'https', full_url: 'https:
 Site.create(domain_name: 'www.bustle.com', protocol: 'https', full_url: 'https://www.bustle.com', page_count: 22, user_id: 3)
 
 
+
+
 Page.create(
 	site_id: 1, 
 	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri.html', 
@@ -72,3 +74,4 @@ Page.create(
 	last_crawled: '2017-11-24 13:16:46 -0500')
 
 Comment.create(page_id: 1, user_id: 1, message: 'h2s could be better. need more data on the best keyterms on the page.' )
+Crawl.create(page_id: 1)

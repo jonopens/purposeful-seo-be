@@ -12,7 +12,7 @@ class Api::V1::PagesController < ApplicationController
 
   def create
     @page = Page.find_or_create_by(page_params)
-
+    Crawl.create(page_id: @page.id)
     if @page.save
       render json: @page
     else
