@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 20171121183317) do
     t.string "h1", array: true
     t.string "h2", array: true
     t.datetime "last_crawled"
+    t.boolean "error_on_last_crawl"
+    t.boolean "redirect_on_last_crawl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -11,6 +11,8 @@ class CreatePages < ActiveRecord::Migration[5.1]
     	t.string :h1, array: true
     	t.string :h2, array: true
         t.datetime :last_crawled
+        t.boolean :error_on_last_crawl
+        t.boolean :redirect_on_last_crawl
         t.timestamps
     end
   end

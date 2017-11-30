@@ -16,22 +16,36 @@ class Crawl < ApplicationRecord
 		scrape_hash
 	end
 
-	def set_crawl_attributes
+	def crawl_and_respond
 		scrape_data = self.scrape
-		self.html_content = scrape_data[:noko]
-		self.html_content = Crawl.clean_body(self.html_content)
-		self.body_text = Crawl.clean_body(scrape_data[:noko].css('body').text)
 		self.status_code = scrape_data[:status_arr][0].to_i
+		if self.status_code == 200
+			self.respond_to_success(scrape_data[:noko])
+			self.set_parent_page_attributes_so_hard
+		else
+			self.respond_to_unsuccessful_scrape
+		end
+		# if self.status_code == 200
+		# 	self.html_content = scrape_data[:noko]
+		# 	self.html_content = Crawl.clean_body(self.html_content)
+		# 	self.body_text = Crawl.clean_body(scrape_data[:noko].css('body').text)
+		# elsif [300..399].includes?(self.status_code)
+		# 	self.page.
+		# elsif [400..499].includes?(self.status_code)
+		# 	self.page.
+		# elsif [500..599].includes?(self.status_code)
+		# 	self.page.
+		# end
 	end
 
-	def set_parent_page_attributes
+	def set_parent_page_attributes_so_hard
 		noko = Nokogiri::HTML(self.html_content)
 
 		self.page.text_to_html_ratio = self.calculate_text_to_html_ratio(noko)
 		self.page.meta_desc          = noko.css("meta[name='description']")
 		self.page.last_crawled       = Time.now
 		self.page.title              = noko.css('title').text
-		self.page.word_count              = self.find_word_count
+		self.page.word_count         = self.find_word_count
 		self.page.h1                 = self.make_node_array('h1', noko)
 		self.page.h2                 = self.make_node_array('h2', noko)
 	end
@@ -40,14 +54,33 @@ class Crawl < ApplicationRecord
 		noko.css(selector).map { |n| n.text }
 	end	
 
-	def set_attributes_so_hard
-		self.set_crawl_attributes
-		self.set_parent_page_attributes
+	def respond_to_success(noko)
+			self.html_content = noko
+			self.html_content = Crawl.clean_body(self.html_content)
+			self.body_text = Crawl.clean_body(noko.css('body').text)
 	end
 
-	def return_crawl_errors
-
+	def respond_to_unsuccessful_scrape
+		if [300..399].includes?(self.status_code)
+			self.page.redirect_on_last_crawl = true
+		elsif [400..499].includes?(self.status_code)
+			self.page.error_on_last_crawl = true
+		elsif [500..599].includes?(self.status_code)
+			self.page.error_on_last_crawl = true
+		end
 	end
+
+	# def return_crawl_redirect
+
+	# end
+
+	# def return_crawl_4xx
+
+	# end
+
+	# def return_crawl_5xx
+
+	# end
 
 	def calculate_text_to_html_ratio(noko)
 		text_length = Crawl.clean_body(noko.css('body').text).length
