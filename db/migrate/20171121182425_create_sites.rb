@@ -4,7 +4,6 @@ class CreateSites < ActiveRecord::Migration[5.1]
       t.string :full_url
       t.string :domain_name
       t.string :protocol
-      t.integer :page_count
       t.integer :user_id
       t.timestamps
     end

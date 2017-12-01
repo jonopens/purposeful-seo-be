@@ -20,6 +20,15 @@ class Api::V1::SitesController < ApplicationController
     end
   end	
 
+  def update
+    @site = Site.find(params[:id])
+    if @site.update(page_params)
+      puts "I UPDATED"
+    else
+      puts "DANG. I DIDN'T UPDATE"
+    end
+  end
+
   def destroy
     @site = Site.find(params[:id])
     render json: @site
@@ -29,7 +38,12 @@ class Api::V1::SitesController < ApplicationController
   private
 
   def site_params
-  	params.require(:site).permit(:full_url, :domain_name, :protocol, :page_count, :user_id)
+  	params.require(:site).permit(
+      :full_url, 
+      :domain_name, 
+      :protocol,  
+      :user_id
+    )
   end
 
 

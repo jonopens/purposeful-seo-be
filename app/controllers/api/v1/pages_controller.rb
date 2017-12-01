@@ -27,16 +27,35 @@ class Api::V1::PagesController < ApplicationController
 
     @page = Page.find(params[:id])
     if @page.update(page_params)
-      puts "I UPDATED"
+      puts "YAY"
+      render json: @page
     else
-      puts "DANG. I DIDN'T UPDATE"
+      puts "UH OH"
+      render json: {error: @page.errors.full_messages}, status: 422
     end
+  end
+
+  def destroy
+    @page = Page.find(params[:id])
+    render json: @page
+    @page.destroy
   end
 
   private
 
   def page_params
-  	params.require(:page).permit(:site_id, :page_path, :page_insight_status, :text_to_html_ratio, :word_count, :title, :meta_desc, :h1, :h2, :last_crawled)
+  	params.require(:page).permit(
+      :site_id, 
+      :page_path, 
+      :page_insight_status, 
+      :text_to_html_ratio, 
+      :word_count, 
+      :title, 
+      :meta_desc, 
+      :h1, 
+      :h2, 
+      :last_crawled
+    )
   end
 
 

@@ -1,4 +1,5 @@
 class SiteSerializer < ActiveModel::Serializer
-  attributes :id, :full_url, :domain_name, :protocol, :page_count, :user_id
+  attributes :id, :full_url, :domain_name, :protocol, :user_id
   has_many :pages
+  has_many :crawls, through: :pages
 end

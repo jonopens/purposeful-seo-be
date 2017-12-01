@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20171121183317) do
     t.string "full_url"
     t.string "domain_name"
     t.string "protocol"
-    t.integer "page_count"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

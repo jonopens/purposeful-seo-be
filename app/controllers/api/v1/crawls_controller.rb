@@ -14,16 +14,10 @@ class Api::V1::CrawlsController < ApplicationController
     @crawl = Crawl.find(params[:id])
     @crawl.crawl_and_respond
     if @crawl.save
-      render json: @crawl
+      render json: @crawl.page
     else
       render json: {error: @crawl.errors.full_messages}, status: 422
     end
-  end
-
-  private
-
-  def crawl_params
-    params.require(:crawl).permit()
   end
 
 end
