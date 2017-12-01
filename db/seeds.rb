@@ -8,8 +8,8 @@ User.create(email: "jaime@jaime.com", password: "woohoo", password_confirmation:
 
 Site.create(domain_name: 'www.jonopens.com', protocol: 'http', full_url: 'http://www.jonopens.com', page_count: 5, user_id: 1)
 Site.create(domain_name: 'www.google.com', protocol: 'https', full_url: 'https://www.google.com', page_count: 1, user_id: 1)
-Site.create(domain_name: 'www.1stdibs.com', protocol: 'http', full_url: 'http://www.1stdibs.com', page_count: 1, user_id: 1)
-Site.create(domain_name: 'www.thebump.com', protocol: 'http', full_url: 'http://www.thebump.com', page_count: 1, user_id: 1)
+Site.create(domain_name: 'www.1stdibs.com', protocol: 'https', full_url: 'https://www.1stdibs.com', page_count: 1, user_id: 1)
+Site.create(domain_name: 'www.thebump.com', protocol: 'https', full_url: 'https://www.thebump.com', page_count: 1, user_id: 1)
 Site.create(domain_name: 'www.jonnylovesjaime.com', protocol: 'http', full_url: 'http://www.jonnylovesjaime.com', page_count: 1, user_id: 4)
 Site.create(domain_name: 'www.theknot.com', protocol: 'https', full_url: 'https://www.theknot.com', page_count: 15, user_id: 2)
 Site.create(domain_name: 'www.bustle.com', protocol: 'https', full_url: 'https://www.bustle.com', page_count: 22, user_id: 3)

@@ -11,8 +11,8 @@ class Api::V1::CrawlsController < ApplicationController
   end
 
   def update
-    @crawl = Crawl.(params[:id])
-
+    @crawl = Crawl.find(params[:id])
+    @crawl.crawl_and_respond
     if @crawl.save
       render json: @crawl
     else
@@ -20,10 +20,10 @@ class Api::V1::CrawlsController < ApplicationController
     end
   end
 
-  # private
+  private
 
-  # def crawl_params
-  #   params.require(:crawl).permit()
-  # end
+  def crawl_params
+    params.require(:crawl).permit()
+  end
 
 end
