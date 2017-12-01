@@ -9,6 +9,11 @@ class Crawl < ApplicationRecord
 	def scrape
 		parent_page_url = "#{self.page.site.full_url}#{self.page.page_path}"
 		opened_url = open(parent_page_url)
+
+		# I need to put some kind of begin-rescue in here in case of
+		# a RuntimeException like the following
+		# RuntimeError: redirection forbidden: http://www.youtube.com/ -> https://www.youtube.com/
+		
 		scrape_hash = {
 			:noko => Nokogiri::HTML(opened_url),
 			:status_arr => opened_url.status
