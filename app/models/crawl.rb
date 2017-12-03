@@ -8,16 +8,21 @@ class Crawl < ApplicationRecord
 
 	def scrape
 		parent_page_url = "#{self.page.site.full_url}#{self.page.page_path}"
-		opened_url = open(parent_page_url)
-
+		begin
+			opened_url = open(parent_page_url)
+			opened_url_status = opened_url.status
+		rescue OpenURI::HTTPError => error
+			response = error.io
+			opened_url_status = response.status
+		ensure
+			scrape_hash = {
+				:noko => Nokogiri::HTML(opened_url),
+				:status_arr => opened_url_status
+			}
+		end
 		# I need to put some kind of begin-rescue in here in case of
 		# a RuntimeException like the following
 		# RuntimeError: redirection forbidden: http://www.youtube.com/ -> https://www.youtube.com/
-		
-		scrape_hash = {
-			:noko => Nokogiri::HTML(opened_url),
-			:status_arr => opened_url.status
-		}
 		scrape_hash
 	end
 
@@ -41,11 +46,12 @@ class Crawl < ApplicationRecord
 	end
 
 	def respond_to_unsuccessful_scrape
-		if [300..399].includes?(self.status_code)
+		errors = 400..599
+		redirects = 300..399
+
+		if redirects.include?(self.status_code)
 			self.page.redirect_on_last_crawl = true
-		elsif [400..499].includes?(self.status_code)
-			self.page.error_on_last_crawl = true
-		elsif [500..599].includes?(self.status_code)
+		elsif errors.include?(self.status_code)
 			self.page.error_on_last_crawl = true
 		end
 	end
@@ -82,6 +88,10 @@ class Crawl < ApplicationRecord
 	  text.gsub!(/(\r)?\n/, "")
   	text.gsub!(/\s+/, ' ')
   	text
+	end
+
+	def handle_open_uri_errors
+
 	end
 
 	def generate_insights
