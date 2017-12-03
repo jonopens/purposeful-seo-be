@@ -4,6 +4,7 @@ require 'time'
 
 class Crawl < ApplicationRecord
 	belongs_to :page
+	validates :page_id, presence: true, numericality: {only_integer: true}
 	has_many :insights, dependent: :destroy
 
 	def scrape
