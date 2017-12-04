@@ -44,6 +44,7 @@ class Crawl < ApplicationRecord
 
 		noko.css('script', 'style').remove
 		self.body_text = Crawl.clean_body(noko.css('body').text)
+		self.save
 	end
 
 	def respond_to_unsuccessful_scrape

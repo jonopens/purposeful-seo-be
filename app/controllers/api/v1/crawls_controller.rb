@@ -10,10 +10,10 @@ class Api::V1::CrawlsController < ApplicationController
     render json: @crawl
   end
 
-  def update
-    @crawl = Crawl.find(params[:id])
-    @crawl.crawl_and_respond
+  def create
+    @crawl = Crawl.new(page_id: params[:page_id])
     if @crawl.save
+      @crawl.crawl_and_respond
       render json: @crawl.page
     else
       render json: {error: @crawl.errors.full_messages}, status: 422
