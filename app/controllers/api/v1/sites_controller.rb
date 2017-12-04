@@ -20,15 +20,6 @@ class Api::V1::SitesController < ApplicationController
     end
   end	
 
-  # def update
-  #   @site = Site.find(params[:id])
-  #   if @site.update(page_params)
-  #     puts "I UPDATED"
-  #   else
-  #     puts "DANG. I DIDN'T UPDATE"
-  #   end
-  # end
-
   def destroy
     @site = Site.find(params[:id])
     render json: @site

@@ -21,9 +21,6 @@ class Crawl < ApplicationRecord
 				:status_arr => opened_url_status
 			}
 		end
-		# I need to put some kind of begin-rescue in here in case of
-		# a RuntimeException like the following
-		# RuntimeError: redirection forbidden: http://www.youtube.com/ -> https://www.youtube.com/
 		scrape_hash
 	end
 
@@ -90,10 +87,6 @@ class Crawl < ApplicationRecord
 	  text.gsub!(/(\r)?\n/, "")
   	text.gsub!(/\s+/, ' ')
   	text
-	end
-
-	def handle_open_uri_errors
-
 	end
 
 	def generate_insights

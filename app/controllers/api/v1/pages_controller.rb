@@ -12,28 +12,12 @@ class Api::V1::PagesController < ApplicationController
 
   def create
     @page = Page.find_or_create_by(page_params)
-    # Crawl.create(page_id: @page.id)
     if @page.save
       render json: @page
     else
       render json: {error: @page.errors.full_messages}, status: 422
     end
   end	
-
-  def update
-    # when I make a page hidden or recrawl the same page
-    # I want to update the correct record
-    # and eventually update insights
-
-    @page = Page.find(params[:id])
-    if @page.update(page_params)
-      puts "YAY"
-      render json: @page
-    else
-      puts "UH OH"
-      render json: {error: @page.errors.full_messages}, status: 422
-    end
-  end
 
   def destroy
     @page = Page.find(params[:id])
@@ -57,6 +41,4 @@ class Api::V1::PagesController < ApplicationController
       :last_crawled
     )
   end
-
-
 end
