@@ -5,5 +5,5 @@ class Site < ApplicationRecord
 	has_many :comments, through: :pages
 	validates :domain_name, presence: true
 	validates :protocol, presence: true
-	validates :user_id, presence: true, uniqueness: { only_integer: true }
+	validates :user_id, presence: true, numericality: { only_integer: true }
 end
