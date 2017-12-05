@@ -1,4 +1,4 @@
-class Api::V1::KeytermsController < ApplicationController
+class KeytermsController < ApplicationController
 
   def index
     @keyterms = Keyterm.all

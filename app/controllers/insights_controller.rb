@@ -1,4 +1,4 @@
-class Api::V1::InsightsController < ApplicationController
+class InsightsController < ApplicationController
 
   def index
     @insights = Insight.all

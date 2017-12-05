@@ -1,10 +1,10 @@
 
 
 
-User.create(email: "jon@jon.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jon Openshaw")
-User.create(email: "james@james.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "James Patterson")
-User.create(email: "jane@jane.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jane Eyre")
-User.create(email: "jaime@jaime.com", password: "woohoo", password_confirmation: "woohoo", crawl_credits: 500, name: "Jaime Openshaw")
+User.create(email: "jon@jon.com", username: "jonjon", password: "wooohooo", password_confirmation: "wooohooo", name: "Jon Openshaw")
+User.create(email: "james@james.com", username: "jamjam", password: "wooohooo", password_confirmation: "wooohooo", name: "James Patterson")
+User.create(email: "jane@jane.com", username: "janjan", password: "wooohooo", password_confirmation: "wooohooo", name: "Jane Eyre")
+User.create(email: "jaime@jaime.com", username: "jaimjaim", password: "wooohooo", password_confirmation: "wooohooo", name: "Jaime Openshaw")
 
 Site.create(domain_name: 'www.jonopens.com', protocol: 'http', full_url: 'http://www.jonopens.com', user_id: 1)
 Site.create(domain_name: 'www.google.com', protocol: 'https', full_url: 'https://www.google.com', user_id: 1)

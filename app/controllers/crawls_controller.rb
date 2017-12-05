@@ -1,4 +1,4 @@
-class Api::V1::CrawlsController < ApplicationController
+class CrawlsController < ApplicationController
 
   def index
     @crawls = Crawl.all

@@ -1,4 +1,4 @@
-class Api::V1::SitesController < ApplicationController
+class SitesController < ApplicationController
 
   def index
     @sites = Site.all
