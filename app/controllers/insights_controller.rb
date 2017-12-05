@@ -1,5 +1,7 @@
 class InsightsController < ApplicationController
 
+  before_action :authenticate_user
+
   def index
     @insights = Insight.all
     render json: @insights

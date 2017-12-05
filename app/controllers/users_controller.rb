@@ -19,9 +19,18 @@
   
   # Method to create a new user using the safe params we setup.
   def create
+    puts user_params
     @user = User.new(user_params)
     if @user.save
-      render json: {status: 200, msg: 'User was created.'}
+      @user.update!(last_login: Time.now)
+      token = { 
+        jwt: JWT.encode(
+          { id: @user.id, exp: 7.days.from_now.to_i }, 
+          Rails.application.secrets.secret_key_base
+        ),
+        user: @user
+      }
+      render json: token
     end
   end
 
@@ -45,7 +54,7 @@
   
   # Setting up strict parameters for when we add account creation.
   def user_params
-    params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
   
   # Adding a method to check if current_user can update itself. 
