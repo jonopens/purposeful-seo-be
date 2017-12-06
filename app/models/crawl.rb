@@ -40,7 +40,7 @@ class Crawl < ApplicationRecord
 		self.html_content = Crawl.clean_body(self.html_content)
 
 		noko.css('script', 'style').remove
-		self.body_text = Crawl.clean_body(noko.css('body').text)
+		self.page.body_text = Crawl.clean_body(noko.css('body').text)
 		self.save
 	end
 
@@ -80,11 +80,11 @@ class Crawl < ApplicationRecord
 	end
 
 	def find_word_count
-		self.body_text.split(' ').length
+		self.page.body_text.split(' ').length
 	end
 
 	def self.clean_body(text)
-	  text.gsub!(/(\r)?\n/, "")
+	  text.gsub!(/(\r)?\n/, " ")
   	text.gsub!(/\s+/, ' ')
   	text
 	end

@@ -13,6 +13,7 @@ class CreatePages < ActiveRecord::Migration[5.1]
         t.datetime :last_crawled
         t.boolean :error_on_last_crawl
         t.boolean :redirect_on_last_crawl
+        t.text :body_text
         t.timestamps
     end
   end

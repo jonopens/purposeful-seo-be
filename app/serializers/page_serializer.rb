@@ -11,8 +11,10 @@ class PageSerializer < ActiveModel::Serializer
   					 :h2, 
   					 :last_crawled, 
   					 :error_on_last_crawl, 
-  					 :redirect_on_last_crawl
+  					 :redirect_on_last_crawl,
+             :body_text
   has_many :insights, through: :crawls
+  has_many :crawls
   has_many :comments
   has_many :keyterms
 end

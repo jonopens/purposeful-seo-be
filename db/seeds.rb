@@ -19,58 +19,18 @@ Site.create(domain_name: 'www.bustle.com', protocol: 'https', full_url: 'https:/
 
 Page.create(
 	site_id: 1, 
-	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri.html', 
-	page_insight_status: "pending", 
-	text_to_html_ratio: 41.99, 
-	word_count: 742, 
-	title: 'Parsing XML Sitemaps with Nokogiri & Open-URI in Ruby', 
-	meta_desc: "I generally enjoy anything that can help out in scraping, and since I'm learning Ruby, I figured I'd give it a shot.", 
-	h1: ['Parsing XML Sitemaps in Ruby with Nokogiri'], 
-	h2: ['What is an XML Sitemap?', 'Reading Documentation Can Be a Shock', 'Getting Started with Nokogiri', '#css Method and Grabbing XML Sitemap URLs'], 
-	last_crawled: '2017-11-24 13:16:46 -0500')
+	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri.html')
 Page.create(
 	site_id: 1, 
-	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri1.html', 
-	page_insight_status: "pending", 
-	text_to_html_ratio: 41.99, 
-	word_count: 742, 
-	title: 'Parsing XML Sitemaps with Nokogiri & Open-URI in Ruby', 
-	meta_desc: "I generally enjoy anything that can help out in scraping, and since I'm learning Ruby, I figured I'd give it a shot.", 
-	h1: ['Parsing XML Sitemaps in Ruby with Nokogiri'], 
-	h2: ['What is an XML Sitemap?', 'Reading Documentation Can Be a Shock', 'Getting Started with Nokogiri', '#css Method and Grabbing XML Sitemap URLs'], 
-	last_crawled: '2017-11-24 13:16:46 -0500')
+	page_path: '/blog/testing-d3-bubble-chart.html')
 Page.create(
 	site_id: 1, 
-	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri2.html', 
-	page_insight_status: "pending", 
-	text_to_html_ratio: 41.99, 
-	word_count: 742, 
-	title: 'Parsing XML Sitemaps with Nokogiri & Open-URI in Ruby', 
-	meta_desc: "I generally enjoy anything that can help out in scraping, and since I'm learning Ruby, I figured I'd give it a shot.", 
-	h1: ['Parsing XML Sitemaps in Ruby with Nokogiri'], 
-	h2: ['What is an XML Sitemap?', 'Reading Documentation Can Be a Shock', 'Getting Started with Nokogiri', '#css Method and Grabbing XML Sitemap URLs'], 
-	last_crawled: '2017-11-24 13:16:46 -0500')
+	page_path: '/blog/monitoring-changes-with-mutation-observers.html')
 Page.create(
 	site_id: 1, 
-	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri3.html', 
-	page_insight_status: "pending", 
-	text_to_html_ratio: 41.99, 
-	word_count: 742, 
-	title: 'Parsing XML Sitemaps with Nokogiri & Open-URI in Ruby', 
-	meta_desc: "I generally enjoy anything that can help out in scraping, and since I'm learning Ruby, I figured I'd give it a shot.", 
-	h1: ['Parsing XML Sitemaps in Ruby with Nokogiri'], 
-	h2: ['What is an XML Sitemap?', 'Reading Documentation Can Be a Shock', 'Getting Started with Nokogiri', '#css Method and Grabbing XML Sitemap URLs'], 
-	last_crawled: '2017-11-24 13:16:46 -0500')
+	page_path: '/blog/useful-cli-applications.html')
 Page.create(
 	site_id: 1, 
-	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri4.html', 
-	page_insight_status: "pending", 
-	text_to_html_ratio: 41.99, 
-	word_count: 742, 
-	title: 'Parsing XML Sitemaps with Nokogiri & Open-URI in Ruby', 
-	meta_desc: "I generally enjoy anything that can help out in scraping, and since I'm learning Ruby, I figured I'd give it a shot.", 
-	h1: ['Parsing XML Sitemaps in Ruby with Nokogiri'], 
-	h2: ['What is an XML Sitemap?', 'Reading Documentation Can Be a Shock', 'Getting Started with Nokogiri', '#css Method and Grabbing XML Sitemap URLs'], 
-	last_crawled: '2017-11-24 13:16:46 -0500')
+	page_path: '/post-list.html')
 
 Comment.create(page_id: 1, user_id: 1, message: 'h2s could be better. need more data on the best keyterms on the page.' )

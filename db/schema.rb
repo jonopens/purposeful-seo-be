@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20171121183317) do
   create_table "crawls", force: :cascade do |t|
     t.integer "status_code"
     t.text "html_content"
-    t.text "body_text"
     t.integer "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(version: 20171121183317) do
     t.datetime "last_crawled"
     t.boolean "error_on_last_crawl"
     t.boolean "redirect_on_last_crawl"
+    t.text "body_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

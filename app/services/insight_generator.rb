@@ -82,7 +82,7 @@ class InsightGenerator
 	end
 
 	def body_text_case_check
-		body = self.crawl.body_text
+		body = self.page.body_text
 		case
 		when body.length == 0
 			Insight.create(
