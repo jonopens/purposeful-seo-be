@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # gems for Crawl class 
+gem 'pry'
 gem 'sanitize'
 gem 'nokogiri'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

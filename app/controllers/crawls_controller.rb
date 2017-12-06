@@ -11,6 +11,7 @@ class CrawlsController < ApplicationController
   end
 
   def create
+    
     @crawl = Crawl.new(page_id: params[:page_id])
     if @crawl.save
       @crawl.crawl_and_respond
