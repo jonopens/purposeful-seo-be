@@ -19,18 +19,9 @@
   
   # Method to create a new user using the safe params we setup.
   def create
-    puts user_params
     @user = User.new(user_params)
     if @user.save
-      @user.update!(last_login: Time.now)
-      token = { 
-        jwt: JWT.encode(
-          { id: @user.id, exp: 7.days.from_now.to_i }, 
-          Rails.application.secrets.secret_key_base
-        ),
-        user: @user
-      }
-      render json: token
+      render json: { status: 200, msg: 'User account successfully created.' }
     end
   end
 
