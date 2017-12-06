@@ -10,7 +10,6 @@ class InsightGenerator
 	def title_case_check
 		case 
 		when self.page.title.length == 0
-
 			Insight.create(crawl_id: self.crawl.id, optimization_type: "title", content: "Page has no title tag value. Add an optimized title tag to this page.")
 		when self.page.title.length < 30
 			l = Insight.new(crawl_id: self.crawl.id, optimization_type: "title", content: "Page's title tag is too short. Ideally, a title tag should be between 30 and 65 characters.")
