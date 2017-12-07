@@ -14,7 +14,20 @@
   # If the user is logged-in we will return the user's information.
   def current
     current_user.update!(last_login: Time.now)
-    render json: current_user
+    flattened = current_user.pages.map {|p| p.insights}.flatten
+    curr_user_with_insights = {
+      id: current_user.id,
+      email: current_user.email,
+      username: current_user.username,
+      created_at: current_user.created_at,
+      updated_at: current_user.updated_at,
+      last_login: current_user.last_login,
+      sites: current_user.sites,
+      pages: current_user.pages,
+      insights: flattened,
+      comments: current_user.comments
+    }
+    render json: curr_user_with_insights
   end
   
   # Method to create a new user using the safe params we setup.
