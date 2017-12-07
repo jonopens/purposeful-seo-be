@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171206200858) do
 
   create_table "insights", force: :cascade do |t|
     t.integer "crawl_id"
+    t.integer "page_id"
     t.string "optimization_type"
     t.string "content"
     t.string "completion_status"
