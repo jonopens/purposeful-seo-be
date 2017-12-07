@@ -9,7 +9,24 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
-    render json: @page
+    page_with_insights = {
+      id: @page.id, 
+      site_id: @page.site_id, 
+      page_path: @page.page_path, 
+      page_insight_status: @page.page_insight_status, 
+      text_to_html_ratio: @page.text_to_html_ratio, 
+      word_count: @page.word_count, 
+      title: @page.title, 
+      meta_desc: @page.meta_desc, 
+      h1: @page.h1, 
+      h2: @page.h2, 
+      last_crawled: @page.last_crawled, 
+      error_on_last_crawl: @page.error_on_last_crawl, 
+      redirect_on_last_crawl: @page.redirect_on_last_crawl,
+      body_text: @page.body_text,
+      insights: @page.crawls.last.insights
+    }
+    render json: page_with_insights
   end
 
   def create
