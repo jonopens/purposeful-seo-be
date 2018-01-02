@@ -53,6 +53,7 @@ class Crawl < ApplicationRecord
 		elsif errors.include?(self.status_code)
 			self.page.error_on_last_crawl = true
 		end
+		self.save	
 	end
 
 	def set_parent_page_attributes_so_hard

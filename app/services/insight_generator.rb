@@ -12,8 +12,7 @@ class InsightGenerator
 		when self.page.title.length == 0
 			Insight.create(crawl_id: self.crawl.id, page_id: self.page.id, optimization_type: "title", content: "Page has no title tag value. Add an optimized title tag to this page.")
 		when self.page.title.length < 30
-			l = Insight.new(crawl_id: self.crawl.id, page_id: self.page.id, optimization_type: "title", content: "Page's title tag is too short. Ideally, a title tag should be between 30 and 65 characters.")
-			l.save
+			Insight.create(crawl_id: self.crawl.id, page_id: self.page.id, optimization_type: "title", content: "Page's title tag is too short. Ideally, a title tag should be between 30 and 65 characters.")
 		when self.page.title.length > 65
 			Insight.create(crawl_id: self.crawl.id, page_id: self.page.id, optimization_type: "title", content: "Title tag is too long. Title tags longer than 65 characters should be shorter.")
 		end
@@ -50,7 +49,7 @@ class InsightGenerator
 			Insight.create(
 				crawl_id: self.crawl.id, page_id: self.page.id, 
 				optimization_type: "meta description", 
-				content: "The meta description for this page is too long. Search engines often don't display meta descriptions longer than 160 characters."
+				content: "The meta description for this page is too long. Shorten it to fewer than 160 characters."
 			)
 		else
 			return
