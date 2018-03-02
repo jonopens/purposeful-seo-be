@@ -31,7 +31,6 @@ class InsightsController < ApplicationController
 
   def insight_params
     params.require(:insight).permit(
-      :crawl_id,
       :page_id,
       :optimization_type,
       :content,
