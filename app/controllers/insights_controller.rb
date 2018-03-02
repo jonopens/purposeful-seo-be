@@ -23,14 +23,20 @@ class InsightsController < ApplicationController
   end
 
   def update
-    @insight = Insight.find_(params[:id]) 
-       
+    @insight = Insight.find(params[:id])
+
   end
 
   private
 
   def insight_params
-    params.require(:insight).permit()
+    params.require(:insight).permit(
+      :crawl_id,
+      :page_id,
+      :optimization_type,
+      :content,
+      :completion_status
+    )
   end
 
 end

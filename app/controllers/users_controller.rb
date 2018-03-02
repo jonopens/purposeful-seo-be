@@ -4,17 +4,17 @@
   before_action :authenticate_user,  only: [:index, :current, :update]
   # before_action :authorize_as_admin, only: [:destroy]
   before_action :authorize,          only: [:update]
-  
+
   # Should work if the current_user is authenticated.
   def index
     render json: {status: 200, msg: 'Logged-in'}
   end
-  
+
   # Call this method to check if the user is logged-in.
   # If the user is logged-in we will return the user's information.
   def current
     current_user.update!(last_login: Time.now)
-    flattened = current_user.pages.map {|p| p.insights}.flatten
+    flattened_insights = current_user.pages.map {|p| p.insights}.flatten
     curr_user_with_insights = {
       id: current_user.id,
       email: current_user.email,
@@ -24,12 +24,12 @@
       last_login: current_user.last_login,
       sites: current_user.sites,
       pages: current_user.pages,
-      insights: flattened,
+      insights: flattened_insights,
       comments: current_user.comments
     }
     render json: curr_user_with_insights
   end
-  
+
   # Method to create a new user using the safe params we setup.
   def create
     @user = User.new(user_params)
@@ -55,13 +55,13 @@
   end
 
   private
-  
+
   # Setting up strict parameters for when we add account creation.
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
-  
-  # Adding a method to check if current_user can update itself. 
+
+  # Adding a method to check if current_user can update itself.
   # This uses our UserModel method.
   def authorize
     return_unauthorized unless current_user && current_user.can_modify_user?(params[:id])

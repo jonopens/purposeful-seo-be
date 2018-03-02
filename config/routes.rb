@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  
+
   get    'auth'            => 'home#auth'
-  
+
   # Get login token from Knock
   post   'user_token'      => 'user_token#create'
-  
+
   # User actions
   get    '/users'          => 'users#index'
   get    '/users/current'  => 'users#current'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :sites, only: [:index, :create, :show, :destroy]
   resources :pages, only: [:index, :create, :show, :destroy]
-  resources :insights, only: [:index, :create, :show]
+  resources :insights, only: [:index, :create, :show, :update]
   resources :comments, only: [:index, :create, :show]
   resources :crawls, only: [:index, :create, :show]
   resources :keyterms, only: [:index, :create, :show]
