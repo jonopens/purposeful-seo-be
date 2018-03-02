@@ -24,7 +24,7 @@ class InsightsController < ApplicationController
 
   def update
     @insight = Insight.find(params[:id])
-
+    byebug
   end
 
   private
