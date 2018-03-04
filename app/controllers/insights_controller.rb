@@ -24,7 +24,12 @@ class InsightsController < ApplicationController
 
   def update
     @insight = Insight.find(params[:id])
-    byebug
+    if @insight.update(insight_params)
+      puts insight_params
+      render json: @insight
+    else
+      render json: {error: @insight.errors.full_messages}, status: 422
+    end
   end
 
   private
