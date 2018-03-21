@@ -17,6 +17,5 @@ Rails.application.routes.draw do
   resources :insights, only: [:index, :create, :show, :update]
   resources :comments, only: [:index, :create, :show, :update]
   resources :crawls, only: [:index, :create, :show]
-  resources :keyterms, only: [:index, :create, :show]
 
 end
