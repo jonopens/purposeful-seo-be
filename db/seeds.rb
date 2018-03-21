@@ -18,19 +18,19 @@ Site.create(domain_name: 'www.bustle.com', protocol: 'https', full_url: 'https:/
 
 
 Page.create(
-	site_id: 1, 
+	site_id: 1,
 	page_path: '/blog/parsing-xml-sitemaps-with-nokogiri.html')
 Page.create(
-	site_id: 1, 
+	site_id: 1,
 	page_path: '/blog/testing-d3-bubble-chart.html')
 Page.create(
-	site_id: 1, 
+	site_id: 1,
 	page_path: '/blog/monitoring-changes-with-mutation-observers.html')
 Page.create(
-	site_id: 1, 
+	site_id: 1,
 	page_path: '/blog/useful-cli-applications.html')
 Page.create(
-	site_id: 1, 
+	site_id: 1,
 	page_path: '/post-list.html')
 
-Comment.create(page_id: 1, user_id: 1, message: 'h2s could be better. need more data on the best keyterms on the page.' )
+# Comment.create(page_id: 1, user_id: 1, message: 'h2s could be better. need more data on the best keyterms on the page.' )

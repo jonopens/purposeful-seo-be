@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :sites, only: [:index, :create, :show, :destroy]
   resources :pages, only: [:index, :create, :show, :destroy]
   resources :insights, only: [:index, :create, :show, :update]
-  resources :comments, only: [:index, :create, :show]
+  resources :comments, only: [:index, :create, :show, :update]
   resources :crawls, only: [:index, :create, :show]
   resources :keyterms, only: [:index, :create, :show]
 

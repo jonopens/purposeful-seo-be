@@ -22,10 +22,20 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      render json: @comment
+    else
+      render json: {error: @comment.errors.full_messages}, status: 422
+    end
+
+  end
+
   private
 
   def comment_params
-    params.require(:comment).permit()
+    params.require(:comment).permit(:user_id, :page_id, :message, :visibility)
   end
 
 end
