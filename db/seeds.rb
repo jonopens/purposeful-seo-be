@@ -10,6 +10,7 @@ Site.create(domain_name: 'www.jonopens.com', protocol: 'http', full_url: 'http:/
 Site.create(domain_name: 'www.google.com', protocol: 'https', full_url: 'https://www.google.com', user_id: 1)
 Site.create(domain_name: 'www.1stdibs.com', protocol: 'https', full_url: 'https://www.1stdibs.com', user_id: 1)
 Site.create(domain_name: 'www.thebump.com', protocol: 'https', full_url: 'https://www.thebump.com', user_id: 1)
+Site.create(domain_name: 'www.howtogeek.com', protocol: 'https', full_url: 'https://www.howtogeek.com', user_id: 1)
 Site.create(domain_name: 'www.jonnylovesjaime.com', protocol: 'http', full_url: 'http://www.jonnylovesjaime.com', user_id: 4)
 Site.create(domain_name: 'www.theknot.com', protocol: 'https', full_url: 'https://www.theknot.com', user_id: 2)
 Site.create(domain_name: 'www.bustle.com', protocol: 'https', full_url: 'https://www.bustle.com', user_id: 3)
