@@ -1,10 +1,10 @@
 
 
 
-User.create(email: "jon@jon.com", username: "jonjon", password: "wooohooo", password_confirmation: "wooohooo", name: "Jon Openshaw")
-User.create(email: "james@james.com", username: "jamjam", password: "wooohooo", password_confirmation: "wooohooo", name: "James Patterson")
-User.create(email: "jane@jane.com", username: "janjan", password: "wooohooo", password_confirmation: "wooohooo", name: "Jane Eyre")
-User.create(email: "jaime@jaime.com", username: "jaimjaim", password: "wooohooo", password_confirmation: "wooohooo", name: "Jaime Openshaw")
+User.create(email: "jon@jon.com", username: "jonjon", password: "wooohooo", password_confirmation: "wooohooo")
+User.create(email: "james@james.com", username: "jamjam", password: "wooohooo", password_confirmation: "wooohooo")
+User.create(email: "jane@jane.com", username: "janjan", password: "wooohooo", password_confirmation: "wooohooo")
+User.create(email: "jaime@jaime.com", username: "jaimjaim", password: "wooohooo", password_confirmation: "wooohooo")
 
 Site.create(domain_name: 'www.jonopens.com', protocol: 'http', full_url: 'http://www.jonopens.com', user_id: 1)
 Site.create(domain_name: 'www.google.com', protocol: 'https', full_url: 'https://www.google.com', user_id: 1)
@@ -29,6 +29,9 @@ Page.create(
 Page.create(
 	site_id: 1,
 	page_path: '/blog/useful-cli-applications.html')
+	Page.create(
+		site_id: 1,
+		page_path: '/blog/the-monty-hall-problem.html')
 Page.create(
 	site_id: 1,
 	page_path: '/post-list.html')
