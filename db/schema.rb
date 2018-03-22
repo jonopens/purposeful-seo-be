@@ -40,12 +40,6 @@ ActiveRecord::Schema.define(version: 20171121183317) do
     t.string "completion_status"
   end
 
-  create_table "keyterms", force: :cascade do |t|
-    t.integer "page_id"
-    t.string "phrase"
-    t.integer "est_search_vol"
-  end
-
   create_table "pages", force: :cascade do |t|
     t.integer "site_id"
     t.string "page_path"
