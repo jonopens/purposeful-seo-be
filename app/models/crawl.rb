@@ -53,7 +53,7 @@ class Crawl < ApplicationRecord
 		elsif errors.include?(self.status_code)
 			self.page.error_on_last_crawl = true
 		end
-		self.save	
+		self.save
 	end
 
 	def set_parent_page_attributes_so_hard
@@ -71,7 +71,7 @@ class Crawl < ApplicationRecord
 
 	def make_node_array(selector, noko)
 		noko.css(selector).map { |n| n.text }
-	end	
+	end
 
 	def calculate_text_to_html_ratio(noko)
 		text_length = Crawl.clean_body(noko.css('body').text).length
@@ -90,14 +90,8 @@ class Crawl < ApplicationRecord
   	text
 	end
 
-	def generate_insights
-		#
-		# SOME CODE HERE THAT LOOKS AT EACH PAGE VALUE AND DOES SOME SHIT
-		#
-	end
-
-	# NOTE: method to remove MS Word tags, if necessary can be uncommented
-	# 
+	# method to remove MS Word tags, if necessary can be uncommented
+	#
 	# def self.strip_bad_chars(text)
 	#   text.gsub!(/"/, "'")
 	#   text.gsub!(/\u2018/, "'")
