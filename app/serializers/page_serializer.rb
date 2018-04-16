@@ -14,6 +14,5 @@ class PageSerializer < ActiveModel::Serializer
   					 :redirect_on_last_crawl,
              :body_text
   has_many :insights
-  has_many :crawls
   has_many :comments
 end

@@ -1,14 +1,15 @@
 class User < ApplicationRecord
 	has_secure_password
 	has_many :sites
-	has_many :pages, through: :sites
 	has_many :comments
-  has_many :insights
+	has_many :pages, through: :sites
+	has_many :insights, through: :sites
+
 	validates_length_of       :password, maximum: 72, minimum: 8, allow_nil: true, allow_blank: false
   validates_confirmation_of :password, allow_nil: true, allow_blank: false
 
-  before_validation { 
-    (self.email = self.email.to_s.downcase) && (self.username = self.username.to_s.downcase) 
+  before_validation {
+    (self.email = self.email.to_s.downcase) && (self.username = self.username.to_s.downcase)
   }
 
   # Make sure email and username are present and unique.

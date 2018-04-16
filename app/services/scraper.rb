@@ -2,15 +2,20 @@ require 'nokogiri'
 require 'open-uri'
 require 'time'
 
-class Crawl < ApplicationRecord
-	belongs_to :page
-	validates :page_id, presence: true, numericality: {only_integer: true}
-	has_many :insights, dependent: :destroy
+class Scraper
 
-	def scrape
-		parent_page_url = "#{self.page.site.full_url}#{self.page.page_path}"
+  attr_accessor :page, :status_code, :html_content
+
+  def initialize(page)
+    self.page = page
+    self.status_code = nil
+    self.html_content = nil
+  end
+
+  def scrape
+    parent_page_url = "#{self.page.site.full_url}#{self.page.page_path}"
 		begin
-			opened_url = open(parent_page_url)
+      opened_url = open(parent_page_url)
 			opened_url_status = opened_url.status
 		rescue OpenURI::HTTPError => error
 			response = error.io
@@ -24,7 +29,7 @@ class Crawl < ApplicationRecord
 		scrape_hash
 	end
 
-	def crawl_and_respond
+	def scrape_and_respond
 		scrape_data = self.scrape
 		self.status_code = scrape_data[:status_arr][0].to_i
 		if self.status_code == 200
@@ -36,12 +41,12 @@ class Crawl < ApplicationRecord
 	end
 
 	def respond_to_success(noko)
-		self.html_content = noko
-		self.html_content = Crawl.clean_body(self.html_content)
+		self.html_content = noko.inner_html
+		self.html_content = Scraper.clean_body(self.html_content)
 
 		noko.css('script', 'style').remove
-		self.page.body_text = Crawl.clean_body(noko.css('body').text)
-		self.save
+		self.page.body_text = Scraper.clean_body(noko.css('body').text)
+		self.page.save
 	end
 
 	def respond_to_unsuccessful_scrape
@@ -53,7 +58,7 @@ class Crawl < ApplicationRecord
 		elsif errors.include?(self.status_code)
 			self.page.error_on_last_crawl = true
 		end
-		self.save	
+		self.page.save
 	end
 
 	def set_parent_page_attributes_so_hard
@@ -71,10 +76,11 @@ class Crawl < ApplicationRecord
 
 	def make_node_array(selector, noko)
 		noko.css(selector).map { |n| n.text }
-	end	
+	end
 
 	def calculate_text_to_html_ratio(noko)
-		text_length = Crawl.clean_body(noko.css('body').text).length
+    body_text = noko.css('body').text
+		text_length = Scraper.clean_body(body_text).length
 		all_chars_length = noko.inner_html.length
 
 		(text_length / all_chars_length.to_f) * 100
@@ -90,14 +96,8 @@ class Crawl < ApplicationRecord
   	text
 	end
 
-	def generate_insights
-		#
-		# SOME CODE HERE THAT LOOKS AT EACH PAGE VALUE AND DOES SOME SHIT
-		#
-	end
+	# note > method to remove MS Word tags, if necessary can be uncommented
 
-	# NOTE: method to remove MS Word tags, if necessary can be uncommented
-	# 
 	# def self.strip_bad_chars(text)
 	#   text.gsub!(/"/, "'")
 	#   text.gsub!(/\u2018/, "'")
