@@ -34,7 +34,7 @@ class Scraper
 		self.status_code = scrape_data[:status_arr][0].to_i
 		if self.status_code == 200
 			self.respond_to_success(scrape_data[:noko])
-			self.set_parent_page_attributes_so_hard
+			self.set_parent_page_attributes
 		else
 			self.respond_to_unsuccessful_scrape
 		end
@@ -61,22 +61,47 @@ class Scraper
 		self.page.save
 	end
 
-	def set_parent_page_attributes_so_hard
+	def set_parent_page_attributes
 		noko = Nokogiri::HTML(self.html_content)
+    p    = self.page
 
-		self.page.text_to_html_ratio = self.calculate_text_to_html_ratio(noko)
-		self.page.meta_desc          = noko.css("meta[name='description']").attribute('content').text
-		self.page.last_crawled       = Time.now
-		self.page.title              = noko.css('title').text
-		self.page.word_count         = self.find_word_count
-		self.page.h1                 = self.make_node_array('h1', noko)
-		self.page.h2                 = self.make_node_array('h2', noko)
-		self.page.save
+    p.last_crawled       = Time.now
+		p.text_to_html_ratio = self.calculate_text_to_html_ratio(noko)
+    p.word_count         = self.find_word_count
+
+    # check HTML for presence before assignment to circumvent errors
+		if self.node_present?("meta[name='description']")
+      p.meta_desc = noko.css("meta[name='description']").attribute('content').text
+    else
+      p.meta_desc = ''
+    end
+		p.title              = noko.css('title').text
+		p.h1                 = self.make_node_array('h1', noko)
+		p.h2                 = self.make_node_array('h2', noko)
+		p.save
 	end
 
 	def make_node_array(selector, noko)
 		noko.css(selector).map { |n| n.text }
 	end
+
+  # def attribute_setter(selector, key, noko, attr = nil)
+  #   p = self.page
+  #   if !!attr
+  #     if self.node_present?(selector)
+  #       p[key] = noko.css(selector).attribute(attr)
+  #     else
+  #       p[key] = ''
+  #     end
+  #   else
+  #     self.node_present?(selector) ? p[key] = noko.css(selector) : p[key] = ''
+  #   end
+  # end
+
+  def node_present?(selector)
+    noko = Nokogiri::HTML(self.html_content)
+    !noko.css(selector).empty?
+  end
 
 	def calculate_text_to_html_ratio(noko)
     body_text = noko.css('body').text
