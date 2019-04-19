@@ -8,7 +8,7 @@ end
 gem 'pry'
 
 # gem for Scraper service
-gem 'nokogiri'
+gem 'nokogiri', ">= 1.8.5"
 gem 'sanitize'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
